@@ -1,7 +1,7 @@
 
 
 
-
+https://www.microchip.com/en-us/product/attiny412#document-table
 
 
 http://www.tp4056.com/datasheet/
