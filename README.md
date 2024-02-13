@@ -12,11 +12,41 @@ The device has a tamper function (not used in this case).
 
 An alarm signal is sent every 5 seconds when the reed switch is opened.
 
-700mAh 16340 battery lasts for just over 7 days tested from full battery.
+700mAh 16340 battery lasts for just over 7 days tested from full battery using 8MHz clock.
 
-4mA standby 10mA TX
+Had to Add another 1.5mA to account for LD1117 dropout and other small current draws in the older circuit.
 
-700/4 = 175 hours
+The LD1117 has a 1V drop what a pain.
+
+700/4 = 175 hours = 7 days roughly
+
+
+
+I am using **4MHz clock at 3.3V = 1.2mA** to get a rough `1mA` consumption amount running 24/7 in `Active Mode`.
+
+# Power Consumption
+
+Active Mode
+
+Active power consumption
+
+8MHz clock at 3.3V = 2.5mA consumption roughly
+
+5MHz clock at 3.3V = 1.6mA consumption roughly
+
+4MHz clock at 3.3V = 1.2mA consumption roughly
+
+| Condition  |  Voltage | Typical Current  | Minimum Current  |
+| :------------ | :------------ | :------------ | :------------ | 
+|CLK_CPU=`20MHz` (OSC20M)      |VDD=5V  |9.0mA  |- 
+|CLK_CPU=`10MHz` (OSC20M div2) |VDD=5V  |4.8mA  |-
+|CLK_CPU=`10MHz` (OSC20M div2) |VDD=3V  |2.7mA  |- 
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=5V  |2.8mA  |- 
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=3V  |1.6mA  |-
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=2V  |1.0mA  |- 
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=5V  |18µA   |-  
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=3V  |10µA   |-  
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=2V  |7µA    |-   
 
 # Other Notes (ATTINY412)
 
