@@ -16,10 +16,16 @@ An alarm signal is sent every 5 seconds when the reed switch is opened.
 
 V1:
 - LD1117 regulator
-- IRF9540 FET
+- IRF9540 mosfet
+- BAT85 schottky
 
 V1.3:
-- ...
+
+Uses mostly SMD parts
+
+- LD1117 replaced with FS8860C33H regulator
+- IRF9540 replaced with SI2303 p-channel mosfet
+- BAT85 replaced with BAT54S schottky
 
 
 # Index
