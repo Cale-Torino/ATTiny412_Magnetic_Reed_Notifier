@@ -165,3 +165,29 @@ Component list:
     - Operating current :20-28mA
     - Output Power: 11dBm
     - Modulation mode: OOK (Amplitude Modulation)
+
+# Problems and fixes
+
+Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... I also noticed harmonics but I won't get into that now...
+
+[<img src="img/IMG_6034-min.JPG" width="500"/>](img/IMG_6034-min.JPG)
+
+[<img src="img/IMG_6034-min.JPG" width="500"/>](img/IMG_6034-min.JPG)
+
+Compared to the super cheap and crude `FS1000A` this is simply unacceptable. 
+
+This can be for a variety of reasons maybe fake parts or a copy etc. etc. or maybe it is just a bad design.
+
+That being said a quick fix is to place a 220nf ceramic capacitor between ground and vcc on the module.
+
+Now the transmittion is barely visable.
+
+I had to do this for all the `WL102-341` modules I purchased...
+
+Honestly I feel like sticking with the `FS1000A` the price for the value is way better it's not perfect but...
+
+- The simple design
+- The price
+- It just works, I tested it using 3.3v as well less range but works..
+
+Problems I encounted are finding the 433 crystal and RF transistors for a decent price in South Africa.
