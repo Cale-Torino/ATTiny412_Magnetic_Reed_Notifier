@@ -12,6 +12,8 @@ The device has a tamper function (not used in this case).
 
 An alarm signal is sent every 5 seconds when the reed switch is opened.
 
+*Some quick tests:*
+
 700mAh 16340 battery lasts for just over 7 days tested from full battery using 8MHz clock.
 
 Had to Add another 1.5mA to account for LD1117 dropout and other small current draws in the older circuit.
@@ -20,9 +22,26 @@ The LD1117 has a 1V drop what a pain.
 
 700/4 = 175 hours = 7 days roughly
 
+However the voltage does drop below 3v when the battery gets low.
+
+Luckily the ATTINY412 and WL102-341 can operate below 3v.
+
+
+
 
 
 I am using **4MHz clock at 3.3V = 1.2mA** to get a rough `1mA` consumption amount running 24/7 in `Active Mode`.
+
+
+
+# Index
+- Power Consumption
+- Other Notes (ATTINY412)
+- Versions
+- Components
+- Transmitter Details
+- Problems and fixes
+- 
 
 # Power Consumption
 
@@ -90,12 +109,14 @@ The only wake-up sources are the pin change interrupt and TWI address match.
 
 After Reset, all standard function device I/O pads are connected to the PORT with outputs tri-stated and
 input buffers enabled, even if there is no clock running.
+
 For best power consumption, disable the input of unused pins and pins that are used as analog inputs or
 outputs.
+
 Specific pins, such as those used for connecting a debugger, may be configured differently, as required
 by their special function
 
-# versions
+# Versions
 
 V1:
 - LD1117 regulator
@@ -109,10 +130,6 @@ Uses mostly SMD parts
 - LD1117 replaced with FS8860C33H regulator
 - IRF9540 replaced with SI2303 p-channel mosfet
 - BAT85 replaced with BAT54S schottky
-
-
-# Index
-- 1
 
 # Components
 
@@ -170,9 +187,9 @@ Component list:
 
 Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... I also noticed harmonics but I won't get into that now...
 
-[<img src="img/IMG_6034-min.JPG" width="500"/>](img/IMG_6034-min.JPG)
+[<img src="img/WL102-341/1-min.jpg" width="500"/>](img/WL102-341/1-min.jpg)
 
-[<img src="img/IMG_6034-min.JPG" width="500"/>](img/IMG_6034-min.JPG)
+[<img src="img/WL102-341/5-min.jpg" width="500"/>](img/WL102-341/5-min.jpg)
 
 Compared to the super cheap and crude `FS1000A` this is simply unacceptable. 
 
@@ -191,3 +208,7 @@ Honestly I feel like sticking with the `FS1000A` the price for the value is way 
 - It just works, I tested it using 3.3v as well less range but works..
 
 Problems I encounted are finding the 433 crystal and RF transistors for a decent price in South Africa.
+
+That being said I really wanted the `WL102-341` to work seamlessly and I still have a little bias towards it.
+
+Yeah the reality for makers is that meh.. purchase quality parts from a reputable store if you want all the stats to be on point.
