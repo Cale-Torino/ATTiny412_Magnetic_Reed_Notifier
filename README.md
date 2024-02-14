@@ -185,7 +185,9 @@ Component list:
 
 # Problems and fixes
 
-Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... I also noticed harmonics but I won't get into that now...
+Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... If the receiver is close.
+
+I also noticed harmonics but I won't get into that now...
 
 [<img src="img/WL102-341/1-min.jpg" width="500"/>](img/WL102-341/1-min.jpg)
 
@@ -195,11 +197,7 @@ Compared to the super cheap and crude `FS1000A` this is simply unacceptable.
 
 This can be for a variety of reasons maybe fake parts or a copy etc. etc. or maybe it is just a bad design.
 
-That being said a quick fix is to place a 220nf ceramic capacitor between ground and vcc on the module.
-
-Now the transmittion is barely visable.
-
-I had to do this for all the `WL102-341` modules I purchased...
+That being said a quick fix is to move the receiver further away from the transmitter.
 
 Honestly I feel like sticking with the `FS1000A` the price for the value is way better it's not perfect but...
 
