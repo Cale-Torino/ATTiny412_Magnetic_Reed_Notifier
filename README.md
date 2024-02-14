@@ -212,3 +212,9 @@ Problems I encounted are finding the 433 crystal and RF transistors for a decent
 That being said I really wanted the `WL102-341` to work seamlessly and I still have a little bias towards it.
 
 Yeah the reality for makers is that meh.. purchase quality parts from a reputable store if you want all the stats to be on point.
+
+
+# Other Links
+
+Links:
+- [Leakeage](https://www.reddit.com/r/AskElectronics/comments/uqnqhh/any_chance_to_fix_wl102341_transmitter_module/?rdt=62217)
