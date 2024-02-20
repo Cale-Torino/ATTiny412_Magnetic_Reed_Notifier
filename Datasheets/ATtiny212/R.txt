@@ -1,0 +1,121 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://za.rs-online.com/web/p/microcontrollers/1936215
+
+Product Details
+The ATtiny212 is a microcontroller using the 8-bit AVR® processor with hardware multiplier, running at up to 20MHz and 2KB Flash, 128B SRAM and 64 bytes of EEPROM in a 8-pin package. The series uses the latest technologies from Microchip with a flexible and low power architecture including Event System and SleepWalking, accurate analog features and advanced peripherals.
+
+8-bit high-performance AVR RISC CPU
+135 instructions
+Hardware multiplier
+Ultra Low Power (ULP)
+Three sleep modes:
+Idle
+Standby
+Power Down
+6 Channels Event System
+Configurable Custom Logic (CCL)
+12 Channel 10-bit ADC with Voltage Reference
+8-bit Digital to Analog Converter (DAC)
+Comparators
+1x 12-bit Timers (TCD)
+2x 16-bit Timer (TCA / TCB)
+Cyclical Redundancy Check (CRC/SCAN)
+Watchdog Timer (WDT)
+Power-On Reset (POR)
+Brown-Out Detection (BOD)
+Single pin programming and debugging interface (UPDI)
+Operation Voltage: 1.8V – 5.5V
+
+
+
+
+
+Specification
+
+Attribute
+
+Value
+
+Family Name	ATtiny212
+Package Type	SOIC
+Mounting Type	Surface Mount
+Pin Count	8
+Device Core	AVR
+Data Bus Width	8bit
+Program Memory Size	2 kB
+Maximum Frequency	20MHz
+RAM Size	128 B
+USB Channels	0
+Number of PWM Units	1
+Number of SPI Channels	1
+Number of UART Channels	0
+Number of I2C Channels	1
+Number of USART Channels	1
+Typical Operating Supply Voltage	1.8 → 5.5 V
+Number of CAN Channels	0
+ADCs	6 x 10 bit
+Minimum Operating Temperature	-40 °C
+Maximum Operating Temperature	+85 °C
+Height	1.5mm
+Number of Ethernet Channels	0
+Maximum Number of Ethernet Channels	0
+Number of PCI Channels	0
+Length	5mm
+Instruction Set Architecture	RISC
+Number of ADC Units	1
+Program Memory Type	Flash
+Pulse Width Modulation	1 (3 Channel)
+Number of LIN Channels	0
+Dimensions	5 x 4 x 1.5mm
+Width	4mm
+3850 Available from UK/Europe in 4–6 working days for collection or delivery to major cities (Heavy, hazardous or lithium product excluded. Delivery T&C's apply)
+
+
+25
+
+units
+
+Add to basket
+FREE delivery for orders over R 1500
+Real time stock check
+
+
+Add to a parts list
+Not Available for premium delivery
+
+Added
+View basket
+Price (Excl VAT) Each (In a Pack of 25)
+
+R 8.719
+
+(exc. VAT)
+
+R 10.027
+
+(inc. VAT)
+
+units	Per unit	Per Pack*
+25 - 25	R 8.719	R 217.975
+50 - 75	R 8.501	R 212.525
+100 +	R 8.246	R 206.15
+*price indicative
+Packaging Options:
+
+Standard Pack
+
+Production Pack
