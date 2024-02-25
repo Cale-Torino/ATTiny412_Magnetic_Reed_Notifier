@@ -185,9 +185,7 @@ Component list:
 
 # Problems and fixes
 
-Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... If the receiver is close.
-
-I also noticed harmonics but I won't get into that now...
+Surprisingly the `WL102-341` module with an IC has a small problem where it transmits ever so slightly but constantly... removing the 0ohm resistor and pulling the EN pin to ground stops this.
 
 [<img src="img/WL102-341/1-min.jpg" width="500"/>](img/WL102-341/1-min.jpg)
 
@@ -197,13 +195,15 @@ Compared to the super cheap and crude `FS1000A` this is simply unacceptable.
 
 This can be for a variety of reasons maybe fake parts or a copy etc. etc. or maybe it is just a bad design.
 
-That being said a quick fix is to move the receiver further away from the transmitter.
+That being said a quick fix is to use the EN pin but this requires removing the 0ohm resistor and wasting a MCU pin on EN...
 
 Honestly I feel like sticking with the `FS1000A` the price for the value is way better it's not perfect but...
 
 - The simple design
 - The price
 - It just works, I tested it using 3.3v as well less range but works..
+- no EN pin
+- low current around 5.4mA @ 3.3V transmitting
 
 Problems I encounted are finding the 433 crystal and RF transistors for a decent price in South Africa.
 
