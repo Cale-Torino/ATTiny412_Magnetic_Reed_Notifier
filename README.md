@@ -30,9 +30,9 @@ Luckily the ATTINY412 and WL102-341 can operate below 3v.
 
 
 
-I am using **4MHz clock at 3.3V = 1.2mA** to get a rough `1mA` consumption amount running 24/7 in `Active Mode`.
+I am using **1MHz clock at 3.3V = 285uA** to get under `1mA` consumption amount running 24/7 in `Active Mode`.
 
-
+However for some reason when in sleep I get `264uA` and in wake I get around `777uA`...
 
 # Index
 - Power Consumption
@@ -45,7 +45,7 @@ I am using **4MHz clock at 3.3V = 1.2mA** to get a rough `1mA` consumption amoun
 
 # Power Consumption
 
-Active Mode
+### Active Mode
 
 Active power consumption
 
@@ -54,6 +54,8 @@ Active power consumption
 5MHz clock at 3.3V = 1.6mA consumption roughly
 
 4MHz clock at 3.3V = 1.2mA consumption roughly
+
+1MHz clock at 3.3V = 285uA consumption roughly
 
 | Condition  |  Voltage | Typical Current  | Minimum Current  |
 | :------------ | :------------ | :------------ | :------------ | 
@@ -66,6 +68,33 @@ Active power consumption
 |CLK_CPU=`32KHz` (OSCULP32K)   |VDD=5V  |18µA   |-  
 |CLK_CPU=`32KHz` (OSCULP32K)   |VDD=3V  |10µA   |-  
 |CLK_CPU=`32KHz` (OSCULP32K)   |VDD=2V  |7µA    |-   
+
+### Power Down Mode
+
+32KHz Oscillator (OSCULP32K)
+
+The 32KHz oscillator is optimized for Ultra Low Power (ULP) operation. Power consumption is decreased
+at the cost of decreased accuracy compared to an external crystal oscillator.
+
+This oscillator also provides the 1KHz signal for the Real Time Counter (RTC), the Watchdog Timer
+(WDT), and the Brownout Detector (BOD).
+
+The start-up time of this oscillator is the oscillator start-up time plus 4 oscillator cycles. Refer to Electrical
+Characteristics chapter for the start-up time.
+
+**Active During Power Down**
+- PIT (RTC) 
+- WDT
+
+**Wake-Up Sources During Power Down**
+- INTn and pin change
+- TWI address match 
+- Periodic Interrupt Timer
+
+**In Power Down Mode @ VDD=3V**
+25°C = 0.1 µA
+85°C = 5.0 µA
+125°C = 7.0 µA
 
 # Other Notes (ATTINY412)
 
@@ -134,6 +163,7 @@ Uses mostly SMD parts
 # Components
 
 Component list:
+
 - Battery
     - 1x 3.7v, 2.59wh, 700mAh lipo (ICR 16340) battery
     - 1x battery holder
@@ -154,7 +184,7 @@ Component list:
 - Resistors
     - 1x 10k
 - Transmitter
-    - 1x WL102-341 3.3v 433.92 Mhz RF
+    - 1x [WL102-341 3.3v 433.92 Mhz RF](WL102-341_TX_Module.md)
 - PCB Switch
     - 1x 1pin dip switch
 - Magnetic Switch
