@@ -8,5 +8,29 @@ http://www.tp4056.com/datasheet/
 
 
 
+----------------------
+
+HT7333, +3.3V Output Type
+
+ISS Quiescent Current
+
+typical: 3.5 μA
+
+max: 7.0 μA
+
+--
+
+VDROP** Dropout Voltage
+
+IOUT= 40mA
+
+typical 90 mV
+
+----------------------
+
+
+
+
+
 
 
