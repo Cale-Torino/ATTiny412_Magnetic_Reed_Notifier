@@ -1,4 +1,4 @@
-# WL102-341 TX & RX470-4 RX Modules 
+# WL102-341 TX Module
 
 < [Back to README](README.md)
 
