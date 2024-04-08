@@ -14,45 +14,53 @@ An alarm signal is sent every 5 seconds when the reed switch is opened.
 
 *Some quick tests:*
 
-How long the circuit lasts roughly tested.
+## Using internal pullups ATtiny412, 8MHz clock, LD1117 & WL102-341
 
 The LD1117 has a 1V drop what a pain.
 
-| Battery Capacity  | Battery Type  | Regulator | Current Drain (idle) | Clock  | Circuit Lasting Time  |
-| :------------ | :------------ | :------------ | :------------  | :------------ | :------------ | 
-|700mAh |16340 | LD1117 | +-4mA |8MHz  |7 days | 
+| Battery Capacity  | Battery Type  | Regulator | Current Drain (sleep) | Current Drain (5s Run) | Current Drain (TX) | Clock  | Circuit Lasting Time (*only sleep mode)  |
+| :------------ | :------------ | :------------| :------------| :------------ | :------------  | :------------ | :------------ | 
+|700mAh |16340 | LD1117 | +-4mA | +-6mA| +-16mA |8MHz  |+-7 days | 
 
-| Condition  |  Voltage | Typical Current  | Minimum Current  |
-| :------------ | :------------ | :------------ | :------------ | 
-|CLK_CPU=`20MHz` (OSC20M)      |VDD=5V  |9.0mA  |- 
-|CLK_CPU=`10MHz` (OSC20M div2) |VDD=5V  |4.8mA  |-
-|CLK_CPU=`10MHz` (OSC20M div2) |VDD=3V  |2.7mA  |- 
-|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=5V  |2.8mA  |- 
-|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=3V  |1.6mA  |-
-|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=2V  |1.0mA  |- 
-|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=5V  |18µA   |-  
-|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=3V  |10µA   |-  
-|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=2V  |7µA    |-  
-
-700mAh 16340 battery lasts for just over 7 days tested from full battery using 8MHz clock.
+WL102-341 chip EN pin constantly on wasteing current.
 
 Had to Add another 1.5mA to account for LD1117 dropout and other small current draws in the older circuit.
 
-The LD1117 has a 1V drop what a pain.
-
-700/4 = 175 hours = 7 days roughly
+700/4 = 175 hours = 7 days roughly.
 
 However the voltage does drop below 3v when the battery gets low.
 
-Luckily the ATTINY412 and WL102-341 can operate below 3v.
+Luckily the ATTINY412 and WL102-341 can operate below 3v.. but still not what I want.
 
+## Using internal pullups ATtiny212, 1MHz clock, FS8860C33H LDO 3.3v & WL102-341 (EN off)
 
+The FS8860C33H is an old chip but has very little drop but has about +-50μA quiescent current... the datasheet doesn't say.
 
+| Battery Capacity  | Battery Type  | Regulator | Current Drain (sleep) | Current Drain (5s Run) | Current Drain (TX) | Clock  | Circuit Lasting Time (*only sleep mode)  |
+| :------------ | :------------ | :------------| :------------| :------------ | :------------  | :------------ | :------------ | 
+|700mAh |16340 | FS8860C33H | +-262.4μA| +-777.3μA| +-12.5mA |1MHz  |+-111.15 days | 
 
+WL102-341 chip EN pin resistor was removed (held high before TX).
 
-I am using **1MHz clock at 3.3V = 285uA** to get under `1mA` consumption amount running 24/7 in `Active Mode`.
+700/0.2624 = 2,667.68 hours = 111.15 days roughly.
 
-However for some reason when in sleep I get `264uA` and in wake I get around `777uA`...
+No significant voltage drop.
+
+## Using 22MΩ external resistors ATtiny212, 1MHz clock, HT7333 LDO 3.3v & WL102-341 (EN off)
+
+The HT7333 is awesome... 250mA max with a quiescent current of 3.5μA - 7.0μA and a very low dropout voltage.
+
+| Battery Capacity  | Battery Type  | Regulator | Current Drain (sleep) | Current Drain (5s Run) | Current Drain (TX) | Clock  | Circuit Lasting Time (*only sleep mode)  |
+| :------------ | :------------ | :------------| :------------| :------------ | :------------  | :------------ | :------------ | 
+|700mAh |16340 | HT7333-A | +-10.24μA| +-644.1μA| +-12.0mA |1MHz  |+-2916.67 days | 
+|550mAh |13400 | HT7333-A | +-10.24μA| +-644.1μA| +-12.0mA |1MHz  |+-2291.67 days | 
+
+Changed battery to a common vape 13400 550mAh
+
+700/0.01 = 70,000 hours = 2916.67 days roughly.
+
+550/0.01 = 55,000 hours = 2291.67 days roughly.
+
 
 # Index
 - Power Consumption
@@ -68,14 +76,6 @@ However for some reason when in sleep I get `264uA` and in wake I get around `77
 ### Active Mode
 
 Active power consumption
-
-8MHz clock at 3.3V = 2.5mA consumption roughly
-
-5MHz clock at 3.3V = 1.6mA consumption roughly
-
-4MHz clock at 3.3V = 1.2mA consumption roughly
-
-1MHz clock at 3.3V = 285uA consumption roughly
 
 | Condition  |  Voltage | Typical Current  | Minimum Current  |
 | :------------ | :------------ | :------------ | :------------ | 
@@ -182,11 +182,10 @@ Uses mostly SMD parts
 
 # Components
 
-Component list:
+Updated Component list:
 
 - Battery
-    - 1x 3.7v, 2.59wh, 700mAh lipo (ICR 16340) battery
-    - 1x battery holder
+    - 1x 3.7v, 2.035wh, 550mAh lipo (ICR 13400) battery
 - Charge Module
     - 1x TP4056 with protection
 - Diodes
@@ -194,19 +193,21 @@ Component list:
 - Mosfets
     - 1x SI2303 P-channel
 - Regulator
-    - 1x FS8860C33H LDO 3.3v
+    - 1x HT7333-A LDO 3.3v
 - Microcontroller
-    - 1x ATtiny412
+    - 1x ATtiny212
 - Capacitors
     - 1x 100nf
     - 1x 10uf
     - 2x 100uf
+    - 2x 4.7nf
 - Resistors
     - 1x 10k
+    - 2x 22MΩ
 - Transmitter
     - 1x [WL102-341 3.3v 433.92 Mhz RF](WL102-341_TX_Module.md)
 - PCB Switch
-    - 1x 1pin dip switch
+    - 1x 2pin header jumper
 - Magnetic Switch
     - 1x reed switch
 - Case
@@ -258,6 +259,10 @@ Honestly I feel like sticking with the `FS1000A` the price for the value is way 
 Problems I encounted are finding the 433 crystal and RF transistors for a decent price in South Africa.
 
 That being said I really wanted the `WL102-341` to work seamlessly and I still have a little bias towards it.
+
+It's got a very sharp peak and has a rock solid frequency.. I will test the SYN115 as well it could be a potential competitor.
+
+Now I just need to find the common affordable modules....
 
 Yeah the reality for makers is that meh.. purchase quality parts from a reputable store if you want all the stats to be on point.
 
