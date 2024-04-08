@@ -14,6 +14,26 @@ An alarm signal is sent every 5 seconds when the reed switch is opened.
 
 *Some quick tests:*
 
+How long the circuit lasts roughly tested.
+
+The LD1117 has a 1V drop what a pain.
+
+| Battery Capacity  | Battery Type  | Regulator | Current Drain (idle) | Clock  | Circuit Lasting Time  |
+| :------------ | :------------ | :------------ | :------------  | :------------ | :------------ | 
+|700mAh |16340 | LD1117 | +-4mA |8MHz  |7 days | 
+
+| Condition  |  Voltage | Typical Current  | Minimum Current  |
+| :------------ | :------------ | :------------ | :------------ | 
+|CLK_CPU=`20MHz` (OSC20M)      |VDD=5V  |9.0mA  |- 
+|CLK_CPU=`10MHz` (OSC20M div2) |VDD=5V  |4.8mA  |-
+|CLK_CPU=`10MHz` (OSC20M div2) |VDD=3V  |2.7mA  |- 
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=5V  |2.8mA  |- 
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=3V  |1.6mA  |-
+|CLK_CPU=`5MHz` (OSC20M div4)  |VDD=2V  |1.0mA  |- 
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=5V  |18µA   |-  
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=3V  |10µA   |-  
+|CLK_CPU=`32KHz` (OSCULP32K)   |VDD=2V  |7µA    |-  
+
 700mAh 16340 battery lasts for just over 7 days tested from full battery using 8MHz clock.
 
 Had to Add another 1.5mA to account for LD1117 dropout and other small current draws in the older circuit.
