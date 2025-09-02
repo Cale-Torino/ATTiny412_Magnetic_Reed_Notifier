@@ -48,6 +48,22 @@ No significant voltage drop.
 
 ## Using 22MΩ external resistors ATtiny212, 1MHz clock, HT7333 LDO 3.3v & WL102-341 (EN off)
 
+External pullup resistor calculation
+
+3.3V/22000k = 0.00015 = 0.15uA = 150nA
+
+datasheet min = 50nA
+
+22M is ok @ 3.3V
+
+2.5V/22000k = 0.0001136 = 0.1136uA = 114nA
+
+22M is ok still ok @ 2.5V
+
+So 22M will work at max 3.3v and min 2.4V voltages without going below 50nA
+
+-
+
 The HT7333 is awesome... 250mA max with a quiescent current of 3.5μA - 7.0μA and a very low dropout voltage.
 
 | Battery Capacity  | Battery Type  | Regulator | Current Drain (sleep) | Current Drain (5s Run) | Current Drain (TX) | Clock  | Circuit Lasting Time (*only sleep mode)  |
